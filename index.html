@@ -3,17 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Poppins:wght@400;500;600;800&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Projeto JavaScript</title>
 </head>
 <body>
 
-    <div class="card">
-        <h1>CONTROLE DE PRODUTOS</h1>
+    <header>
+        <h1>Minha Lojinha 420</h1>
+    </header>
 
-        <button onclick="produto.adicionar()">Adicionar</button>
-        <button onclick="produto.excluir()">Deletar</button>
-    </div>
+    <main>
+        <div class="title">
+            <h2>Produtos</h2>
+            <span>Lista de produtos 420.</span>
+        </div>
+
+        <div class="card">
+            <div class="lineInput">
+                <label>Produto</label>
+                <input type="text" id="produto" placeholder="Nome do produto">
+            </div>
+
+            <div class="lineInput">
+                <label>Preço</label>
+                <input type="text" id="preco" placeholder="Preço do produto">
+            </div>
+
+             <button onclick="produto.salvar()">Salvar</button>
+            <button onclick="produto.cancelar()">Cancelar</button>
+        </div> 
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th class="center">Ações</th>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    
     
     <script src="js/script.js"></script>
 </body>
