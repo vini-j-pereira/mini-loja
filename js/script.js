@@ -12,7 +12,41 @@ class Produto {
             this.adicionar(produto);
         }
 
-        console.log(this.arrayProdutos);
+        this.listaTabela();
+        this.cancelar();
+    }
+
+    listaTabela() {
+        let tbody = document.getElementById('tbody');
+        tbody.innerText = '';
+
+        for(let i = 0; i < this.arrayProdutos.length; i++) {
+            let tr = tbody.insertRow();
+
+            let td_id = tr.insertCell();
+            let td_produto = tr.insertCell();
+            let td_valor = tr.insertCell();
+            let td_acoes = tr.insertCell();
+
+            td_id.innerText = this.arrayProdutos[i].id;
+            td_produto.innerText = this.arrayProdutos[i].nomeProduto;
+            td_valor.innerText = this.arrayProdutos[i].preco;
+
+            td_id.classList.add('center');
+            td_acoes.classList.add('center');
+
+            let imgEdit = document.createElement('img');
+            imgEdit.src = 'img/editar.svg';
+
+            let imgDelete = document.createElement('img');
+            imgDelete.src = 'img/lixo.svg';
+            imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
+
+            td_acoes.appendChild(imgEdit);
+            td_acoes.appendChild(imgDelete);
+
+            console.log(this.arrayProdutos);
+        }
     }
 
     adicionar(produto) {
@@ -50,7 +84,20 @@ class Produto {
     }
 
     cancelar() {
-        
+        document.getElementById('produto').value = '';
+        document.getElementById('preco').value = '';
+    }
+
+    deletar(id) {
+
+        let tbody = document.getElementById('tbody');
+
+        for(let i = 0; i < this.arrayProdutos.length; i++) {
+            if(this.arrayProdutos[i].id == id) {
+                this.arrayProdutos.splice(i, 1);
+                tbody.deleteRow(i);
+            }
+        }
     }
 }
 
